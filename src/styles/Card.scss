@@ -1,0 +1,33 @@
+.card {
+width: 150px;
+list-style: none;
+text-align: center;
+border: solid 2px purple;
+border-radius: 10%;
+background-color: pink;
+padding: 10px;
+
+&__a{
+    text-decoration: none;
+    color: purple;
+
+}
+&__img {
+width: 100%;
+}
+&__movie {
+
+}
+&__line {
+
+}
+&__year{
+    
+}
+}
+
+.cardList{
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+}
