@@ -3,8 +3,10 @@ import { useState, useEffect } from 'react';
 import getDataApi from '../services/calltoapi';
 import List from './movies/List';
 import Header from './header/Header';
-
-// import DetailCard from './DetailCard';
+import { Routes, Route, Link } from 'react-router-dom';
+import DetailCard from './movies/DetailCard';
+import { useLocation, matchPath } from "react-router";
+import LocalStorage from '../services/LocalStorage'
 
 const App = () => {
   const [dataCard, setDataCard] = useState([]);
@@ -29,7 +31,7 @@ const App = () => {
     const years = dataCard.map((scene) => scene.year);
     const singleYears = new Set(years);
     const singleYearsArray = [...singleYears];
-    return singleYearsArray;
+    return singleYearsArray.sort();
   };
 
   const filteredScenes = dataCard
@@ -43,16 +45,40 @@ const App = () => {
       }
     });
 
+const {pathname} = useLocation();
+const route = matchPath("/scene/:id", pathname);
+const cardId = route !== null ? route.params.id : "";
+
+const oneScene = dataCard.find((scene) => scene.id === cardId);
+  
   return (
-    <div>
-      <Header
-        getYear={getYear()}
-        yearFilter={yearFilter}
-        handleYear={handleYear}
-        titleFilter={titleFilter}
-        handleChange={handleChange}
-      />
-      <List dataCard={dataCard} filteredScenes={filteredScenes} />
+    <div className='body'>
+      <Routes>
+        <Route
+          path='/'
+          element={
+            <>
+              <Header
+                getYear={getYear()}
+                yearFilter={yearFilter}
+                handleYear={handleYear}
+                titleFilter={titleFilter}
+                handleChange={handleChange}
+              />
+
+              <List dataCard={dataCard} filteredScenes={filteredScenes} />
+            </>
+          }
+        />
+        <Route path='/scene/:id'
+        element={
+          <>
+          <DetailCard card={oneScene} />
+          <Link to="/">Atrás</Link>
+          </>
+        }
+        />
+      </Routes>
     </div>
   );
 };

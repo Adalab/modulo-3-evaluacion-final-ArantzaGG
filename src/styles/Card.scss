@@ -1,38 +1,34 @@
 .card {
-width: 150px;
-list-style: none;
-text-align: center;
-border: solid 2px purple;
-border-radius: 10%;
-background-color: pink;
-padding: 10px;
-
-&__a{
-    text-decoration: none;
-    color: purple;
-
-}
-&__img {
-width: 100%;
-}
-&__movie {
-
-}
-&__line {
-
-}
-&__year{
-    
-}
+  width: 150px;
+  list-style: none;
+  text-align: center;
+  border: solid 2px purple;
+  border-radius: 10%;
+  background-color: pink;
+  padding: 10px;
+  font-family: 'Courier New', Courier, monospace;
+  &__link{
+  text-decoration: none;
+  color: purple;
+  }
+  &__img {
+    width: 100%;
+  }
+  &__movie {
+  }
+  &__line {
+  }
+  &__year {
+  }
 }
 
-.cardList{
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
+.cardList {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
 }
-.msjError{
-    font-family: 'Courier New', Courier, monospace;
-    color:  purple;
-    font-size: 20px;
+.msjError {
+  font-family: 'Courier New', Courier, monospace;
+  color: purple;
+  font-size: 20px;
 }
