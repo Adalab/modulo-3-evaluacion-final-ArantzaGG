@@ -1,4 +1,6 @@
-.body {
+@import './Reset.scss';
+html {
     height: 100vh;
-    background-color: rgb(247, 191, 247);
+    background-image: url('../images/8084124_1154.jpg');
+    background-size: cover;
 }

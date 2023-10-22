@@ -28,15 +28,17 @@ const Form = ({
   };
 
   return (
-    <form className='form' onSubmit={handleSubmit}>
+    <form className='header__form' onSubmit={handleSubmit}>
+      <label className='header__form__label' htmlFor="input">Buscar por título:</label>
       <input
         className='header__form__input'
         type='text'
         name='input'
-        placeholder='Buscar por título'
+        placeholder='Insertar título'
         value={titleFilter}
         onChange={handleInput}
       />
+      <label className='header__form__label' htmlFor="select">Buscar por año:</label>
       <select
         className='header__form__select'
         name='year'
@@ -44,7 +46,8 @@ const Form = ({
         value={yearFilter}
         onChange={handleSelect}
       >
-        <option value=''>Todos los años</option>
+        
+        <option value=''>Todos</option>
         {renderYear()}
       </select>
     </form>

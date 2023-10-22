@@ -1,12 +1,25 @@
 import Card from './Card';
 import '../../styles/Card.scss';
+import '../../styles/List.scss';
 import { Link } from 'react-router-dom';
+import ErrorModal from './MsjError';
+import { useState, useEffect } from 'react';
 
 const cardList = ({ filteredScenes }) => {
-  if (filteredScenes.length === 0) {
-    return (
-      <p className='msjError'>No hay coincidencias, ¡prueba con otro título!</p>
-    );
+  const [isErrorModalOpen, setIsErrorModalOpen] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+
+
+  useEffect(() => {
+    if (filteredScenes.length === 0) {
+      setErrorMessage('¡Vaya! No hay coincidencias, ¿por qué no pruebas con otro título?');
+      setIsErrorModalOpen(true);
+    }else{
+      setIsErrorModalOpen(false);
+    }
+  }, [filteredScenes]);
+  const handleCloseModal = () => {
+    setIsErrorModalOpen(false);
   }
   //bonus 9: ordenar por nombre
   const orderedScenes = [...filteredScenes].sort((a, b) =>
@@ -24,9 +37,15 @@ const cardList = ({ filteredScenes }) => {
     );
   });
   return (
-    <>
-      <ul className='cardList'>{renderCards}</ul>
-    </>
+    <section className='section'>
+      <ul className='section__cardList'>{renderCards}</ul>
+      {isErrorModalOpen && (
+        <ErrorModal
+          message={errorMessage}
+          onClose={handleCloseModal}
+        />
+      )}
+    </section>
   );
 };
 

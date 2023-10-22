@@ -1,4 +1,5 @@
 import Form from './Form';
+import '../../styles/Header.scss'
 
 const Header = ({
   handleChange,
@@ -8,8 +9,8 @@ const Header = ({
   getYear,
 }) => {
   return (
-    <header>
-      <h1 className='main-title'>WOW! THIS IS OWEN WILSON!</h1>
+    <header className='header'>
+      <h1 className='header__title'>WOW! THIS IS OWEN WILSON!</h1>
       <Form
         handleChange={handleChange}
         titleFilter={titleFilter}

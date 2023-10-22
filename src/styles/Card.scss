@@ -1,34 +1,39 @@
+@import './Reset.scss';
 .card {
-  width: 150px;
+  width: 300px;
   list-style: none;
   text-align: center;
-  border: solid 2px purple;
-  border-radius: 10%;
-  background-color: pink;
-  padding: 10px;
+  box-shadow: 4px 4px 10px rgb(17, 5, 20);
+  border-radius: 15px;
+  background-color: #533c5399;
+  padding: 20px;
   font-family: 'Courier New', Courier, monospace;
+  font-size: 2rem;
+  margin-left: 15px;
+  margin-right: 15px;
+
+  @media (min-width:1024px){
+    width: 400px;
+  }
   &__link{
   text-decoration: none;
-  color: purple;
+  color:rgb(32, 7, 34);
+  
   }
   &__img {
-    width: 100%;
+    width: 70%;
+    border-radius: 10px;
   }
-  &__movie {
+  &__desc {
+    background-color: #311c3199;
+    border-radius: 10px;
+    padding: 5px;
+    color: white;
+    @media (min-width:1024px){
+      font-size: 3rem;
+    }
   }
-  &__line {
-  }
-  &__year {
-  }
+  
 }
 
-.cardList {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-.msjError {
-  font-family: 'Courier New', Courier, monospace;
-  color: purple;
-  font-size: 20px;
-}
+

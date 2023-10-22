@@ -1,0 +1,51 @@
+.section {
+  height: 50vh;
+  margin-top: 20vh;
+  &__cardList {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+}
+
+.modal {
+  &__content {
+    background: linear-gradient(45deg, #b4f7e8, #c1a5e6);
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 10px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    /* Estilos para el mensaje */
+    &__msj {
+      font-family: 'Gochi Hand';
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    &__button {
+      background-color: #311f85;
+      border: none;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      width: 100px;
+
+      &:hover {
+        background-color: #816eec;
+      }
+    }
+  }
+}

@@ -14,6 +14,7 @@ const getDataAPI = () => {
           year: movie.year,
           id: uuid(),
           audio: movie.audio,
+          director: movie.director,
         };
       });
       return cleanData;

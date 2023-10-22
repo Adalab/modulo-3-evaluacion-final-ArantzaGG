@@ -12,6 +12,7 @@ const App = () => {
   const [dataCard, setDataCard] = useState([]);
   const [titleFilter, setTitleFilter] = useState('');
   const [yearFilter, setYearFilter] = useState('');
+  
 
   useEffect(() => {
     getDataApi().then((cleanData) => {
@@ -74,7 +75,7 @@ const oneScene = dataCard.find((scene) => scene.id === cardId);
         element={
           <>
           <DetailCard card={oneScene} />
-          <Link to="/">Atrás</Link>
+          
           </>
         }
         />
