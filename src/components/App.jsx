@@ -49,13 +49,14 @@ const App = () => {
         return yearFilterNumber === item.year;
       }
     });
-const handleRefresh = () =>{
-  getDataApi().then((cleanData) => {
-    setDataCard(cleanData);
-  });
-  setTitleFilter('');
-  setYearFilter('');
-}
+  const handleRefresh = () => {
+    getDataApi().then((cleanData) => {
+      setDataCard(cleanData);
+      LocalStorage.set('storagedData', cleanData);
+    });
+    setTitleFilter('');
+    setYearFilter('');
+  };
 
   return (
     <div className='body'>
@@ -70,10 +71,14 @@ const handleRefresh = () =>{
                 handleYear={handleYear}
                 titleFilter={titleFilter}
                 handleChange={handleChange}
-                handleRefresh= {handleRefresh}
+                handleRefresh={handleRefresh}
               />
 
-              <List dataCard={dataCard} filteredScenes={filteredScenes} handleRefresh= {handleRefresh} />
+              <List
+                dataCard={dataCard}
+                filteredScenes={filteredScenes}
+                handleRefresh={handleRefresh}
+              />
             </>
           }
         />
