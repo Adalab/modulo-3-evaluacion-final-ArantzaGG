@@ -6,7 +6,7 @@ const Form = ({
   yearFilter,
   handleYear,
   getYear,
-  handleRefresh
+  handleRefresh,
 }) => {
   const handleSubmit = (ev) => {
     ev.preventDefault();
@@ -27,9 +27,11 @@ const Form = ({
       </option>
     ));
   };
-const handleReset = () => {
-  handleRefresh();
-}
+  const handleReset = (ev) => {
+    handleRefresh();
+    ev.preventDefault();
+    
+  };
   return (
     <form className='header__form' onSubmit={handleSubmit}>
       <label className='header__form__label' htmlFor='input'>
@@ -56,7 +58,9 @@ const handleReset = () => {
         <option value=''>Todos</option>
         {renderYear()}
       </select>
-      <button className='button' onClick={handleReset}>Refrescar</button>
+      <button className='button' type='button' onClick={handleReset}>
+        Refrescar
+      </button>
     </form>
   );
 };
@@ -66,6 +70,6 @@ Form.propTypes = {
   yearFilter: PropTypes.string,
   handleYear: PropTypes.func,
   getYear: PropTypes.array,
-  handleRefresh: PropTypes.func
+  handleRefresh: PropTypes.func,
 };
 export default Form;

@@ -22,7 +22,7 @@ const App = () => {
         LocalStorage.set('storagedData', cleanData);
       });
     }
-  }, []);
+  }, [dataCard.length]);
 
   const handleChange = (value) => {
     setTitleFilter(value);
