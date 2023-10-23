@@ -48,6 +48,6 @@ const CardList = ({ filteredScenes, handleRefresh }) => {
   );
 };
 
-CardList.propTypes = { filteredScenes: PropTypes.array };
+CardList.propTypes = { filteredScenes: PropTypes.array, handleRefresh: PropTypes.func};
 
 export default CardList;

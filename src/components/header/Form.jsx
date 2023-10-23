@@ -66,5 +66,6 @@ Form.propTypes = {
   yearFilter: PropTypes.string,
   handleYear: PropTypes.func,
   getYear: PropTypes.array,
+  handleRefresh: PropTypes.func
 };
 export default Form;
