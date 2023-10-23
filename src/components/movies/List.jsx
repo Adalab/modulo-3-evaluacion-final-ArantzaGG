@@ -6,7 +6,7 @@ import ErrorModal from './MsjError';
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-const CardList = ({ filteredScenes }) => {
+const CardList = ({ filteredScenes, handleRefresh }) => {
   const [isErrorModalOpen, setIsErrorModalOpen] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -22,6 +22,7 @@ const CardList = ({ filteredScenes }) => {
   }, [filteredScenes]);
   const handleCloseModal = () => {
     setIsErrorModalOpen(false);
+    handleRefresh();
   };
   //bonus 9: ordenar por nombre
   const orderedScenes = [...filteredScenes].sort((a, b) =>

@@ -8,17 +8,20 @@ const Header = ({
   yearFilter,
   handleYear,
   getYear,
+  handleRefresh
 }) => {
   return (
     <header className='header'>
-      <h1 className='header__title'>WOW! THIS IS OWEN WILSON!</h1>
+      <h1 className='header__title'> <span className='header__title__first'>WOW!</span> THIS IS OWEN WILSON!</h1>
       <Form
         handleChange={handleChange}
         titleFilter={titleFilter}
         yearFilter={yearFilter}
         handleYear={handleYear}
         getYear={getYear}
+        handleRefresh={handleRefresh}
       />
+      
     </header>
   );
 };

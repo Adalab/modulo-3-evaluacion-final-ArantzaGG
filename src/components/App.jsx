@@ -6,6 +6,7 @@ import Header from './header/Header';
 import { Routes, Route } from 'react-router-dom';
 import DetailCard from './movies/DetailCard';
 import LocalStorage from '../services/LocalStorage';
+import ErrorModal from './movies/MsjError';
 
 const App = () => {
   const [dataCard, setDataCard] = useState(
@@ -48,6 +49,13 @@ const App = () => {
         return yearFilterNumber === item.year;
       }
     });
+const handleRefresh = () =>{
+  getDataApi().then((cleanData) => {
+    setDataCard(cleanData);
+  });
+  setTitleFilter('');
+  setYearFilter('');
+}
 
   return (
     <div className='body'>
@@ -62,9 +70,10 @@ const App = () => {
                 handleYear={handleYear}
                 titleFilter={titleFilter}
                 handleChange={handleChange}
+                handleRefresh= {handleRefresh}
               />
 
-              <List dataCard={dataCard} filteredScenes={filteredScenes} />
+              <List dataCard={dataCard} filteredScenes={filteredScenes} handleRefresh= {handleRefresh} />
             </>
           }
         />
@@ -76,7 +85,16 @@ const App = () => {
             </>
           }
         />
-        <Route path='*' element={<p>La página que buscas no existe.</p>} />
+        <Route
+          path='*'
+          element={
+            <ErrorModal
+              message={
+                'Página no encontrada. Pulsa "Cerrar" para volver a la página principal.'
+              }
+            />
+          }
+        />
       </Routes>
     </div>
   );

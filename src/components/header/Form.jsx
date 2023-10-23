@@ -6,6 +6,7 @@ const Form = ({
   yearFilter,
   handleYear,
   getYear,
+  handleRefresh
 }) => {
   const handleSubmit = (ev) => {
     ev.preventDefault();
@@ -26,7 +27,9 @@ const Form = ({
       </option>
     ));
   };
-
+const handleReset = () => {
+  handleRefresh();
+}
   return (
     <form className='header__form' onSubmit={handleSubmit}>
       <label className='header__form__label' htmlFor='input'>
@@ -53,6 +56,7 @@ const Form = ({
         <option value=''>Todos</option>
         {renderYear()}
       </select>
+      <button className='button' onClick={handleReset}>Refrescar</button>
     </form>
   );
 };

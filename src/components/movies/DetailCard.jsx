@@ -3,6 +3,7 @@ import '../../styles/DetailCard.scss';
 import { Link } from 'react-router-dom';
 import { useLocation, matchPath } from 'react-router';
 import PropTypes from 'prop-types';
+import ErrorModal from './MsjError';
 
 const DetailCard = ({ dataCard }) => {
   const { pathname } = useLocation();
@@ -12,7 +13,13 @@ const DetailCard = ({ dataCard }) => {
   const oneScene = dataCard.find((scene) => scene.id === cardId);
 
   if (oneScene === undefined) {
-    return <p></p>;
+    return (
+      <ErrorModal
+        message={
+          'Página no encontrada. Pulsa "Cerrar" para volver a la página principal.'
+        }
+      />
+    );
   }
   return (
     <article className='detailCard'>
@@ -28,23 +35,26 @@ const DetailCard = ({ dataCard }) => {
         <h3 className='detailCard__container__movie'> {oneScene.title}</h3>
       </div>
       <div className='detailCard__desc'>
-        <p className='detailCard__desc__line'>
-          &quot;{oneScene.line}&quot;
+        <span className='detailCard__desc__line'>
           <i className='icon fa-solid fa-comments fa-xl'></i>
-        </p>
-
-        <p className='detailCard__desc__dir'>
-          {oneScene.director} - {oneScene.year}
-          <i className='icon fa-solid fa-clapperboard fa-xl'></i>
-        </p>
-        <Link
-          className='detailCard__desc__audio'
-          to={oneScene.audio}
-          target='_blank'
-        >
-          Escucha el clip aquí:
+          <p>&quot;{oneScene.line}&quot;</p>
+        </span>
+        <span className='detailCard__desc__dir'>
+          <i className='icon fa-solid fa-clapperboard fa-xl'></i>{' '}
+          <p>
+            {oneScene.director} - {oneScene.year}
+          </p>
+        </span>
+        <span className='detailCard__desc__audio'>
           <i className='icon fa-solid fa-headphones-simple fa-shake fa-xl'></i>
-        </Link>
+          <Link
+            className='detailCard__desc__audio-link'
+            to={oneScene.audio}
+            target='_blank'
+          >
+            Clip de audio
+          </Link>
+        </span>
       </div>
     </article>
   );

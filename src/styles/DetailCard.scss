@@ -10,16 +10,14 @@
   margin-bottom: 10vh;
   padding-bottom: 5vh;
   padding-top: 5vh;
-  height: 90%;
 
   @media (min-width: 768px) {
     flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+    align-items: stretch;
     padding-inline: 3rem;
-    gap: 3rem;
     margin-top: 10vh;
     margin-inline: 5vw;
+    justify-content: flex-start;
   }
 
   &__back {
@@ -27,9 +25,8 @@
     background: linear-gradient(45deg, #b4f7e8, #c1a5e6);
     border-radius: 40px;
     width: 60px;
-    @media (min-width: 768px) {
-      transform: translateY(-400%);
-    }
+    height: 50px;
+    margin-left: 10px;
   }
 
   &__container {
@@ -43,31 +40,28 @@
     max-height: 100%;
 
     @media (min-width: 768px) {
-      gap: 0px;
+      max-width: 50%;
     }
     &__img {
       max-width: 100%;
-      max-height: 200%;
       border-radius: 10px;
       border: solid 5px rgb(247, 191, 247);
 
       @media (min-width: 768px) {
-      }
-      @media (min-width: 1024px) {
-        max-height: 80%;
-        max-width: 60%;
+        max-width: 50%;
       }
     }
 
     &__movie {
-      font-size: 4rem;
+      font-size: 3rem;
       font-family: 'Permanent Marker';
       text-align: center;
       color: rgb(32, 7, 34);
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
       animation: fadeIn 1s ease-in-out;
       border: solid rgb(247, 191, 247);
-      padding: 15px;
+      padding-inline: 10px;
+      width: 100%;
       border-radius: 10px;
 
       @media (min-width: 768px) {
@@ -86,72 +80,56 @@
   }
 
   &__desc {
-    font-family: 'Gochi Hand';
-    text-align: center;
-    border: solid rgb(247, 191, 247);
-    padding: 5rem;
+    background-color: #311c3199;
     border-radius: 10px;
+    padding-inline: 40px;
+    padding-block: 30px;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 600;
+    font-size: 1.5rem;
+    border: solid rgb(247, 191, 247);
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-    margin-inline: 2vw;
+    justify-content: center;
+    gap: 3rem;
+    margin-inline: 10px;
+    min-width: 40%;
 
     @media (min-width: 768px) {
-      justify-content: flex-end;
       border: none;
+      gap: 5rem;
     }
 
-    @media (min-width: 1024px) {
-      max-width: 50vw;
-    }
     &__line {
-      font-size: 2rem;
-      font-style: italic;
       display: flex;
-      gap: 3rem;
+      font-style: italic;
       justify-content: center;
       align-items: center;
-
-      @media (min-width: 768px) {
-        justify-content: flex-end;
-        text-align: end;
-      }
-      @media (min-width: 1024px) {
-        font-size: 3rem;
-      }
+      gap: 3rem;
+      flex-direction: column;
+      text-align: center;
     }
 
     &__dir {
       text-decoration: none;
-      font-size: 2rem;
       display: flex;
+      flex-direction: column;
       align-items: center;
       gap: 2rem;
-      @media (min-width: 768px) {
-        justify-content: flex-end;
-      }
-      @media (min-width: 1024px) {
-        font-size: 4rem;
-      }
+      text-align: center;
     }
 
     &__audio {
-      font-family: 'Permanent Marker';
-      text-decoration: none;
-      font-size: 2rem;
-      color: rgb(247, 191, 247);
       display: flex;
       gap: 2rem;
       justify-content: center;
       align-items: center;
-
-      @media (min-width: 768px) {
-        justify-content: flex-end;
-        padding-top: 5rem;
-        margin-bottom: -5rem;
-      }
-      @media (min-width: 1024px) {
-        font-size: 3rem;
+      flex-direction: column;
+      &-link {
+        text-align: center;
+        text-decoration: none;
+        color: white;
       }
     }
   }
