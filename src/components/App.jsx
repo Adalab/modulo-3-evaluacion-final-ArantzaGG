@@ -40,7 +40,7 @@ const App = () => {
   };
 
   const filteredScenes = dataCard
-    .filter((scene) => scene.title.toLowerCase().includes(titleFilter))
+    .filter((scene) => scene.title.toLowerCase().includes(titleFilter.toLowerCase()))
     .filter((item) => {
       if (yearFilter === '') {
         return true;
