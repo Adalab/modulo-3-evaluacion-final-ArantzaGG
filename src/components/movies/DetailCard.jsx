@@ -1,7 +1,19 @@
 import '../../styles/Card.scss';
 import '../../styles/DetailCard.scss';
 import { Link } from 'react-router-dom';
-const DetailCard = ({ card }) => {
+import { useLocation, matchPath } from 'react-router';
+import PropTypes from 'prop-types';
+
+const DetailCard = ({ dataCard }) => {
+  const { pathname } = useLocation();
+  const route = matchPath('/scene/:id', pathname);
+  const cardId = route !== null ? route.params.id : '';
+
+  const oneScene = dataCard.find((scene) => scene.id === cardId);
+
+  if (oneScene === undefined) {
+    return <p></p>;
+  }
   return (
     <article className='detailCard'>
       <Link className='detailCard__back' to='/'>
@@ -10,25 +22,24 @@ const DetailCard = ({ card }) => {
       <div className='detailCard__container'>
         <img
           className='detailCard__container__img'
-          src={card.image}
-          alt={card.title}
+          src={oneScene.image}
+          alt={oneScene.title}
         />
-        <h3 className='detailCard__container__movie'> {card.title}</h3>
+        <h3 className='detailCard__container__movie'> {oneScene.title}</h3>
       </div>
       <div className='detailCard__desc'>
         <p className='detailCard__desc__line'>
-         
-          "{card.line}"<i className='icon fa-solid fa-comments fa-xl'></i>
+          &quot;{oneScene.line}&quot;
+          <i className='icon fa-solid fa-comments fa-xl'></i>
         </p>
 
         <p className='detailCard__desc__dir'>
-         
-          {card.director} - {card.year}
+          {oneScene.director} - {oneScene.year}
           <i className='icon fa-solid fa-clapperboard fa-xl'></i>
         </p>
         <Link
           className='detailCard__desc__audio'
-          to={card.audio}
+          to={oneScene.audio}
           target='_blank'
         >
           Escucha el clip aquí:
@@ -38,5 +49,5 @@ const DetailCard = ({ card }) => {
     </article>
   );
 };
-
+DetailCard.propTypes = { dataCard: PropTypes.array };
 export default DetailCard;

@@ -1,5 +1,6 @@
 import Form from './Form';
-import '../../styles/Header.scss'
+import '../../styles/Header.scss';
+import PropTypes from 'prop-types';
 
 const Header = ({
   handleChange,
@@ -21,4 +22,13 @@ const Header = ({
     </header>
   );
 };
+
+Header.propTypes = {
+  handleChange: PropTypes.func,
+  titleFilter: PropTypes.string,
+  yearFilter: PropTypes.string,
+  handleYear: PropTypes.func,
+  getYear: PropTypes.array,
+};
+
 export default Header;

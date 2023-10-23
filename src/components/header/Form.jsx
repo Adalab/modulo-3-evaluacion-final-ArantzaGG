@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 const Form = ({
   handleChange,
@@ -29,16 +29,20 @@ const Form = ({
 
   return (
     <form className='header__form' onSubmit={handleSubmit}>
-      <label className='header__form__label' htmlFor="input">Buscar por título:</label>
+      <label className='header__form__label' htmlFor='input'>
+        Buscar por título:
+      </label>
       <input
         className='header__form__input'
-        type='text'
+        type='search'
         name='input'
         placeholder='Insertar título'
         value={titleFilter}
         onChange={handleInput}
       />
-      <label className='header__form__label' htmlFor="select">Buscar por año:</label>
+      <label className='header__form__label' htmlFor='select'>
+        Buscar por año:
+      </label>
       <select
         className='header__form__select'
         name='year'
@@ -46,12 +50,17 @@ const Form = ({
         value={yearFilter}
         onChange={handleSelect}
       >
-        
         <option value=''>Todos</option>
         {renderYear()}
       </select>
     </form>
   );
 };
-
+Form.propTypes = {
+  handleChange: PropTypes.func,
+  titleFilter: PropTypes.string,
+  yearFilter: PropTypes.string,
+  handleYear: PropTypes.func,
+  getYear: PropTypes.array,
+};
 export default Form;

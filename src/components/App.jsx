@@ -3,21 +3,24 @@ import { useState, useEffect } from 'react';
 import getDataApi from '../services/calltoapi';
 import List from './movies/List';
 import Header from './header/Header';
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import DetailCard from './movies/DetailCard';
-import { useLocation, matchPath } from "react-router";
-import LocalStorage from '../services/LocalStorage'
+import LocalStorage from '../services/LocalStorage';
 
 const App = () => {
-  const [dataCard, setDataCard] = useState([]);
+  const [dataCard, setDataCard] = useState(
+    LocalStorage.get('storagedData', [])
+  );
   const [titleFilter, setTitleFilter] = useState('');
   const [yearFilter, setYearFilter] = useState('');
-  
 
   useEffect(() => {
-    getDataApi().then((cleanData) => {
-      setDataCard(cleanData);
-    });
+    if (dataCard.length === 0) {
+      getDataApi().then((cleanData) => {
+        setDataCard(cleanData);
+        LocalStorage.set('storagedData', cleanData);
+      });
+    }
   }, []);
 
   const handleChange = (value) => {
@@ -46,12 +49,6 @@ const App = () => {
       }
     });
 
-const {pathname} = useLocation();
-const route = matchPath("/scene/:id", pathname);
-const cardId = route !== null ? route.params.id : "";
-
-const oneScene = dataCard.find((scene) => scene.id === cardId);
-  
   return (
     <div className='body'>
       <Routes>
@@ -71,14 +68,15 @@ const oneScene = dataCard.find((scene) => scene.id === cardId);
             </>
           }
         />
-        <Route path='/scene/:id'
-        element={
-          <>
-          <DetailCard card={oneScene} />
-          
-          </>
-        }
+        <Route
+          path='/scene/:id'
+          element={
+            <>
+              <DetailCard dataCard={dataCard} />
+            </>
+          }
         />
+        <Route path='*' element={<p>La página que buscas no existe.</p>} />
       </Routes>
     </div>
   );
